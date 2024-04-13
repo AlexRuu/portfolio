@@ -14,3 +14,57 @@ model Images {
   width     Int
   createdAt DateTime @default(now())
 }
+
+model Recipe {
+  id              String            @id @default(uuid())
+  title           String
+  recipeImage     recipeImage[]
+  RecipeComponent RecipeComponent[]
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+}
+
+model RecipeComponent {
+  id          String       @id @default(uuid())
+  title       String
+  recipeId    String
+  recipe      Recipe       @relation(fields: [recipeId], references: [id])
+  ingredients Ingredient[]
+  directions  Direction[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Ingredient {
+  id                String          @id @default(uuid())
+  title             String
+  measurementId     String
+  measurement       Measurement     @relation(fields: [measurementId], references: [id])
+  recipeComponentId String
+  recipeComponent   RecipeComponent @relation(fields: [recipeComponentId], references: [id])
+}
+
+model Measurement {
+  id         String       @id @default(uuid())
+  amount     Int
+  unit       String
+  Ingredient Ingredient[]
+}
+
+model Direction {
+  id                String          @id @default(uuid())
+  step              Int
+  direction         String
+  recipeComponentId String
+  RecipeComponent   RecipeComponent @relation(fields: [recipeComponentId], references: [id])
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+}
+
+model recipeImage {
+  id        String   @id @default(uuid())
+  url       String
+  recipeId  String
+  recipe    Recipe   @relation(fields: [recipeId], references: [id])
+  createdAt DateTime @default(now())
+}
