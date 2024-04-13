@@ -13,7 +13,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-us">
+    <html lang="en-us" className="scroll-smooth">
       <body className="w-full">
         <div className="max-w-[100vw] overflow-x-hidden w-full">
           <Navbar />
