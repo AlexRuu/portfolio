@@ -38,15 +38,15 @@ model RecipeComponent {
 model Ingredient {
   id                String          @id @default(uuid())
   title             String
-  measurementId     String
-  measurement       Measurement     @relation(fields: [measurementId], references: [id])
+  measurementId     String?
+  measurement       Measurement?     @relation(fields: [measurementId], references: [id])
   recipeComponentId String
   recipeComponent   RecipeComponent @relation(fields: [recipeComponentId], references: [id])
 }
 
 model Measurement {
   id         String       @id @default(uuid())
-  amount     Int
+  amount     String
   unit       String
   Ingredient Ingredient[]
 }
