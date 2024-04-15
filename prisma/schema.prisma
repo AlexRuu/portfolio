@@ -18,6 +18,7 @@ model Images {
 model Recipe {
   id              String            @id @default(uuid())
   title           String
+  description     String            @default("")
   recipeImage     recipeImage[]
   RecipeComponent RecipeComponent[]
   createdAt       DateTime          @default(now())
@@ -29,6 +30,7 @@ model RecipeComponent {
   title       String
   recipeId    String
   recipe      Recipe       @relation(fields: [recipeId], references: [id])
+  description String       @default("")
   ingredients Ingredient[]
   directions  Direction[]
   createdAt   DateTime     @default(now())
@@ -39,7 +41,7 @@ model Ingredient {
   id                String          @id @default(uuid())
   title             String
   measurementId     String?
-  measurement       Measurement?     @relation(fields: [measurementId], references: [id])
+  measurement       Measurement?    @relation(fields: [measurementId], references: [id])
   recipeComponentId String
   recipeComponent   RecipeComponent @relation(fields: [recipeComponentId], references: [id])
 }
