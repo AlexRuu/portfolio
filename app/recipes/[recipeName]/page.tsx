@@ -19,9 +19,9 @@ const SingleRecipePage = async ({
   }
 
   return (
-    <div>
+    <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-24">
       <DisplayRecipe recipe={recipe} />
-    </div>
+    </main>
   );
 };
 
