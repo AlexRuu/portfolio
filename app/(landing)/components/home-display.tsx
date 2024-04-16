@@ -1,12 +1,12 @@
 "use client";
 
-import { Images } from "@/types";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
+import { Images } from "@prisma/client";
 
 interface HomeDisplayProps {
   images: Images[];
@@ -75,7 +75,7 @@ const HomeDisplay: React.FC<HomeDisplayProps> = ({ images }) => {
           </div>
         ))}
         <div
-          className="z-[100] relative flex justify-center items-end"
+          className="z-10 relative flex justify-center items-end"
           style={{ width: `${width}px`, height: `${height}px` }}
         >
           <ChevronDown
