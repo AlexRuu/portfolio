@@ -11,7 +11,15 @@ const SingleRecipePage = async ({
 
   const recipe = await prismadb.recipe.findFirst({
     where: { title: { equals: recipeName, mode: "insensitive" } },
-    include: { RecipeComponent: true, RecipeImage: true },
+    include: {
+      RecipeComponent: {
+        include: {
+          ingredients: { include: { measurement: true } },
+          directions: true,
+        },
+      },
+      RecipeImage: true,
+    },
   });
 
   if (!recipe) {

@@ -2,9 +2,19 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Prisma } from "@prisma/client";
 import Image from "next/image";
+import Link from "next/link";
 
 type Recipe = Prisma.RecipeGetPayload<{
-  include: { RecipeComponent: true; RecipeImage: true };
+  include: {
+    RecipeComponent: {
+      include: {
+        ingredients: { include: { measurement: true } };
+        directions: true;
+      };
+      orderBy: { id: "asc" };
+    };
+    RecipeImage: true;
+  };
 }>;
 
 interface DisplayRecipeProps {
@@ -13,8 +23,8 @@ interface DisplayRecipeProps {
 
 const DisplayRecipe: React.FC<DisplayRecipeProps> = ({ recipe }) => {
   return (
-    <div className="text-center w-full h-screen">
-      <h1 className="md:text-3xl text-2xl mb-4">{recipe.title}</h1>
+    <div className="text-center w-full">
+      <h1 className="md:text-4xl text-2xl mb-4 font-bold">{recipe.title}</h1>
       <div className="flex text-center justify-center gap-1 p-2">
         <p>
           <span className="font-bold px-1">Prep Time:</span>
@@ -29,13 +39,13 @@ const DisplayRecipe: React.FC<DisplayRecipeProps> = ({ recipe }) => {
           {recipe.totalTime}
         </p>
       </div>
-      <div className="mb-5">
-        <p>
-          <span className="font-bold px-1">Serving Size:</span>
-          {recipe.servingSize}
-        </p>
-      </div>
-      <div className="block relative text-center px-10 py-10">
+      <Link
+        href="#recipe"
+        className="hover:before:scale-x-100 relative before:w-full before:h-[2px] before:transition-transform before:duration-300 before:scale-x-0 before:bg-black before:absolute before:left-0 before:bottom-0 "
+      >
+        Jump to Recipe
+      </Link>
+      <div className="block relative text-center px-10 py-5">
         <p>{recipe.description}</p>
       </div>
       <div className="w-full">
@@ -48,6 +58,60 @@ const DisplayRecipe: React.FC<DisplayRecipeProps> = ({ recipe }) => {
               className="block rounded-[30px] overflow-hidden relative max-w-full border-none"
             />
           </AspectRatio>
+        </div>
+      </div>
+      <div
+        id="recipe"
+        className="grid md:grid-cols-[25%_75%] grid-cols-1 mt-10"
+      >
+        <div className="text-left p-3 mr-5 bg-blue-50 rounded-md overflow-hidden max-h-[60%]">
+          <h2 className="text-2xl font-semibold">Ingredients</h2>
+          <p className="text-lg">for {recipe.servingSize}</p>
+          <div>
+            {recipe.RecipeComponent.map(
+              (component) =>
+                component.ingredients.length > 0 && (
+                  <ul key={component.id} className="pt-2">
+                    <h5 className="font-semibold text-lg">{component.title}</h5>
+                    {component.ingredients.map((ingredient) => (
+                      <li key={ingredient.id} className="pb-1">
+                        {ingredient.measurement !== null && (
+                          <>
+                            <span className="font-medium pr-1">
+                              {ingredient.measurement?.amount}
+                            </span>
+                            <span className="pr-1 font-medium">
+                              {ingredient.measurement?.unit}
+                            </span>
+                          </>
+                        )}
+                        <span className="px-0 lowercase">
+                          {ingredient.title}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                )
+            )}
+          </div>
+        </div>
+        <div className="text-left p-3">
+          <h2 className="text-2xl font-semibold">Preparation</h2>
+          <div>
+            {recipe.RecipeComponent.map((step) => (
+              <div key={step.id}>
+                <h6 className="font-semibold pb-1">{step.title}</h6>
+                <ul className="pb-5">
+                  {step.directions.map((direction) => (
+                    <li key={direction.id} className="pb-1">
+                      {direction.step}.{" "}
+                      <span className="pl-1">{direction.direction}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
