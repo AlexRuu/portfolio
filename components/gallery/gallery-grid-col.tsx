@@ -1,5 +1,5 @@
 "use client";
-import { Images } from "@/types";
+import { Images } from "@prisma/client";
 import GalleryItem from "./gallery-item";
 
 interface GalleryGridColumnProps {
