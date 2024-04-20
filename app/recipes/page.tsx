@@ -12,7 +12,7 @@ const RecipesPage = async () => {
     <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-24">
       <div className="text-center w-full">
         <h1 className="md:text-4xl text-2xl mb-4 font-bold">Recipes</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {recipes.map((recipe) => (
             <div key={recipe.id}>
               <Link
@@ -21,20 +21,21 @@ const RecipesPage = async () => {
                   .replaceAll(" ", "-")}`}
               >
                 <div className="relative block text-center group">
-                  <AspectRatio ratio={1 / 1} className="w-full h-full relative">
+                  <AspectRatio
+                    ratio={1 / 1}
+                    className="w-full h-full relative rounded-md"
+                  >
                     <Image
                       src={recipe.RecipeImage[0].url}
                       fill
                       alt={recipe.title}
-                      className="object-cover"
+                      className="object-cover rounded-[20px]"
                     />
                   </AspectRatio>
-                  <div className="h-full absolute top-0 block w-full overflow-hidden">
-                    <div className="h-full translate-y-[90%] text-center w-full group-hover:-translate-y-0 transition-all duration-700 group-hover:bg-blue-50 group-hover:bg-opacity-50">
-                      <p>{recipe.title}</p>
-                      <p>
-                        adaskdhaskjdhakjdhaskj adaskdhaskjdhakjdhaskjaskdjhas
-                      </p>
+                  <div className="h-full absolute top-0 block w-full overflow-hidden rounded-[20px]">
+                    <div className="h-full translate-y-96 text-center w-full group-hover:-translate-y-0 transition-all duration-700 group-hover:bg-blue-50 group-hover:bg-opacity-50">
+                      <p className="text-[25px]">{recipe.title}</p>
+                      <p>{recipe.shortDescription}</p>
                     </div>
                   </div>
                 </div>
