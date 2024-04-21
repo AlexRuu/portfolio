@@ -81,6 +81,8 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.7s ease-in",
         "fade-out": "fade-out 0.3s ease-out",
+        "navbar-fade-in": "fade-in 0.2s ease-in",
+        "navbar-fade-out": "fade-out 0.2s ease-out",
       },
     },
   },
