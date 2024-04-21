@@ -12,7 +12,7 @@ const RecipesPage = async () => {
     <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-24">
       <div className="text-center w-full">
         <h1 className="md:text-4xl text-2xl mb-4 font-bold">Recipes</h1>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {recipes.map((recipe) => (
             <div key={recipe.id}>
               <Link
@@ -33,7 +33,7 @@ const RecipesPage = async () => {
                     />
                   </AspectRatio>
                   <div className="h-full absolute top-0 block w-full overflow-hidden rounded-[20px]">
-                    <div className="h-full translate-y-96 text-center w-full group-hover:-translate-y-0 transition-all duration-700 group-hover:bg-blue-50 group-hover:bg-opacity-50">
+                    <div className="h-full translate-y-full text-center w-full group-hover:-translate-y-0 transition-all duration-700 group-hover:bg-blue-50 group-hover:bg-opacity-50 px-10">
                       <p className="text-[25px]">{recipe.title}</p>
                       <p>{recipe.shortDescription}</p>
                     </div>
