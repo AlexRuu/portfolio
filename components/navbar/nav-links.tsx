@@ -25,7 +25,7 @@ const links = [
 
 const NavLinks = () => {
   return (
-    <nav className="flex flex-wrap w-1/2 justify-end pr-[5.5rem]">
+    <nav className="flex flex-wrap w-1/2 justify-end pl-[5.5rem]">
       <NavigationMenu>
         <NavigationMenuList>
           {links.map((link) => (
