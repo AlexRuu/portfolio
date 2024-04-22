@@ -63,7 +63,7 @@ const NavigationMenuContent = React.forwardRef<
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
-      "bg-white z-[100] text-sm right-0 rounded-md border-b-black border-b-4 absolute left-auto top-full w-auto data-[state=open]:animate-navbar-fade-in data-[state=closed]:animate-navbar-fade-out md:absolute md:w-auto ",
+      "bg-white z-[100] text-sm right-0 border-b-black border-b-4 absolute left-auto top-full w-auto data-[state=open]:animate-navbar-fade-in data-[state=closed]:animate-navbar-fade-out md:absolute md:w-auto ",
       className
     )}
     {...props}
