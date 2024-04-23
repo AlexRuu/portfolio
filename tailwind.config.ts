@@ -75,6 +75,11 @@ const config = {
           "0%": { opacity: "100" },
           "100%": { opacity: "0" },
         },
+        "fade-down": {
+          "0%": { transform: "translateY(-10px)", opacity: "0" },
+          "50%": { opacity: "100" },
+          "100%": { transform: "translateY(10px)", opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -83,6 +88,7 @@ const config = {
         "fade-out": "fade-out 0.3s ease-out",
         "navbar-fade-in": "fade-in 0.2s ease-in",
         "navbar-fade-out": "fade-out 0.2s ease-out",
+        "fade-down": "fade-down 4s ease-in-out infinite",
       },
     },
   },
