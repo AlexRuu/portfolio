@@ -1,4 +1,5 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Header from "@/components/ui/header";
 import prismadb from "@/lib/prismadb";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +12,7 @@ const RecipesPage = async () => {
   return (
     <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-24">
       <div className="text-center w-full">
-        <h1 className="md:text-4xl text-2xl mb-4 font-bold">Recipes</h1>
+        <Header title="Recipes" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {recipes.map((recipe) => (
             <div key={recipe.id}>
