@@ -16,10 +16,7 @@ const BelowDisplay = () => {
   }
 
   return (
-    <div
-      className="absolute left-0 block h-[876px]"
-      style={{ top: `${height}px` }}
-    >
+    <div className="block relative">
       <div className="grid grid-cols-2 w-full">
         <p className="w-1/2">hi</p>
         <p className="w-1/2">there</p>
