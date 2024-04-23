@@ -13,13 +13,13 @@ const Navbar = () => {
     <div>
       <div
         className={cn(
-          "hidden sm:flex w-full justify-between pt-3 z-[100] absolute",
+          "hidden sm:flex w-full justify-between pt-3 z-[100] absolute min-h-16 items-center",
           pathname == "/" && "text-white"
         )}
       >
         <Link
           href={"/"}
-          className="h-10 w-max items-center justify-center rounded-md px-4 py-2 hover:opacity-50"
+          className="h-10 w-max items-center justify-center rounded-md pl-10 py-2 hover:opacity-50"
         >
           Alex Ru
         </Link>
