@@ -39,10 +39,7 @@ const HomeDisplay: React.FC<HomeDisplayProps> = ({ images }) => {
   }
 
   return (
-    <div
-      className="absolute block top-0 left-0 cursor-default overflow-hidden select-none z-1"
-      style={{ width: `${width}px`, height: `${height}px` }}
-    >
+    <div style={{ width: `${width}px`, height: `${height}px` }}>
       <div
         className="cursor-default select-none absolute block top-0 left-0 overflow-hidden"
         style={{ width: `${width}px`, height: `${height}px` }}
@@ -79,7 +76,7 @@ const HomeDisplay: React.FC<HomeDisplayProps> = ({ images }) => {
           style={{ width: `${width}px`, height: `${height}px` }}
         >
           <ChevronDown
-            className="text-white relative"
+            className="text-white relative animate-fade-down cursor-pointer"
             size={62}
             // @ts-ignore
             onClick={() => window.scrollTo({ top: height })}
