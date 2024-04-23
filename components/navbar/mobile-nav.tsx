@@ -31,7 +31,7 @@ const MobileNavbar = () => {
         <div className="flex justify-between w-full items-center">
           <Link
             href={"/"}
-            className="h-10 w-max items-center justify-center rounded-md px-4 py-2"
+            className="h-10 w-max items-center justify-center rounded-md pl-10 py-2"
           >
             Alex Ru
           </Link>
