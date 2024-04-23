@@ -6,7 +6,7 @@ const HomePage = async () => {
   const images = await prismadb.images.findMany({ where: { width: 6000 } });
 
   return (
-    <main>
+    <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-24">
       <div className="flex flex-col">
         <HomeDisplay images={images} />
         <BelowDisplay />
@@ -16,5 +16,3 @@ const HomePage = async () => {
 };
 
 export default HomePage;
-
-// className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-24"
