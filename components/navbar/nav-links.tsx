@@ -20,12 +20,12 @@ const sublinks = [
 
 const links = [
   { title: "Home", href: "/" },
-  { title: "Projects", href: "/projects", submenu: sublinks },
+  { title: "My Work", href: "#", submenu: sublinks },
 ];
 
 const NavLinks = () => {
   return (
-    <nav className="flex flex-wrap w-1/2 justify-end pl-[5.5rem]">
+    <nav className="flex flex-wrap w-1/2 justify-end pr-10">
       <NavigationMenu>
         <NavigationMenuList>
           {links.map((link) => (
