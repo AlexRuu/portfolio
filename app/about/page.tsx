@@ -1,11 +1,12 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Header from "@/components/ui/header";
 import Image from "next/image";
 
 const AboutPage = () => {
   return (
     <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-24">
       <div className="w-full ">
-        <h1 className="text-center">About</h1>
+        <Header title="About Me" />
         <div className="">
           <AspectRatio ratio={6 / 4}>
             <Image
