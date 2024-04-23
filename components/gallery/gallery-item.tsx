@@ -51,7 +51,7 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ image, images }) => {
       </AspectRatio>
       <DialogContent
         onOpenAutoFocus={(e) => e.preventDefault()}
-        className="flex justify-center"
+        className="flex justify-center z-[999]"
       >
         <div className="relative self-center">
           <button>
