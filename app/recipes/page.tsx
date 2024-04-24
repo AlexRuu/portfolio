@@ -4,6 +4,15 @@ import prismadb from "@/lib/prismadb";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Metadata } from "next";
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: `Recipes`,
+    description: "Try making some of my favourite recipes!",
+  };
+};
+
 const RecipesPage = async () => {
   const recipes = await prismadb.recipe.findMany({
     include: { RecipeImage: true },

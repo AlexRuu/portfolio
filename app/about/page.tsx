@@ -2,6 +2,15 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Header from "@/components/ui/header";
 import Image from "next/image";
 
+import { Metadata } from "next";
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: "About Me",
+    description: "Get to know me!",
+  };
+};
+
 const AboutPage = () => {
   return (
     <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-24">

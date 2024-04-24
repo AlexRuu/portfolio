@@ -2,6 +2,15 @@ import GalleryGridColumn from "@/components/gallery/gallery-grid-col";
 import Header from "@/components/ui/header";
 import prismadb from "@/lib/prismadb";
 
+import { Metadata } from "next";
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: "Gallery",
+    description: "Some of my work!",
+  };
+};
+
 const GalleryPage = async () => {
   const images = await prismadb.images.findMany({ orderBy: { id: "asc" } });
 
