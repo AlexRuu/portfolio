@@ -54,8 +54,15 @@ model Ingredient {
 model Measurement {
   id         String       @id @default(uuid())
   amount     String
-  unit       String
+  unitId     String?
+  unit       Unit? @relation(fields: [unitId], references: [id])
   Ingredient Ingredient[]
+}
+
+model Unit {
+  id String @id @default(uuid())
+  title String
+  measurement Measurement[]
 }
 
 model Direction {
@@ -81,15 +88,14 @@ model Project {
   title       String
   description String
   url         String
-  stack       Stack[]
+  projectImage ProjectImage[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
-model Stack {
-  id        String   @id @default(uuid())
-  title     String
+model ProjectImage {
+  id String @id @default(uuid())
+  url String 
   projectId String
-  project   Project  @relation(fields: [projectId], references: [id])
-  createdAt DateTime @default(now())
+  project Project @relation(fields: [projectId], references: [id])
 }
