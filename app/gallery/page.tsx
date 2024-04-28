@@ -12,15 +12,17 @@ export const generateMetadata = (): Metadata => {
 };
 
 const GalleryPage = async () => {
-  const images = await prismadb.images.findMany({ orderBy: { id: "asc" } });
+  const images = await prismadb.images.findMany({
+    orderBy: { createdAt: "desc" },
+  });
 
   return (
     <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-24">
       <Header title="Gallery" />
       <div className="grid grid-cols-2 gap-4">
-        <GalleryGridColumn images={images.slice(0, 7)} fullSetImages={images} />
+        <GalleryGridColumn images={images.slice(0, 9)} fullSetImages={images} />
         <GalleryGridColumn
-          images={images.slice(8, 16)}
+          images={images.slice(10, 18)}
           fullSetImages={images}
         />
       </div>
