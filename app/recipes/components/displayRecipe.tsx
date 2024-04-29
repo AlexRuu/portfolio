@@ -8,10 +8,10 @@ type Recipe = Prisma.RecipeGetPayload<{
   include: {
     RecipeComponent: {
       include: {
-        ingredients: { include: { measurement: true } };
+        ingredients: { include: { measurement: { include: { unit: true } } } };
         directions: true;
       };
-      orderBy: { id: "asc" };
+      orderBy: { step: "asc" };
     };
     RecipeImage: true;
   };
@@ -81,7 +81,7 @@ const DisplayRecipe: React.FC<DisplayRecipeProps> = ({ recipe }) => {
                               {ingredient.measurement?.amount}
                             </span>
                             <span className="pr-1 font-medium">
-                              {ingredient.measurement?.unit}
+                              {ingredient.measurement.unit?.title}
                             </span>
                           </>
                         )}
@@ -99,17 +99,21 @@ const DisplayRecipe: React.FC<DisplayRecipeProps> = ({ recipe }) => {
           <h2 className="text-2xl font-semibold">Preparation</h2>
           <div>
             {recipe.RecipeComponent.map((step) => (
-              <div key={step.id}>
-                <h6 className="font-semibold pb-1">{step.title}</h6>
-                <ul className="pb-5">
-                  {step.directions.map((direction) => (
-                    <li key={direction.id} className="pb-1">
-                      {direction.step}.{" "}
-                      <span className="pl-1">{direction.direction}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <>
+                {step.directions.length > 0 && (
+                  <div key={step.id}>
+                    <h6 className="font-semibold pb-1">{step.title}</h6>
+                    <ul className="pb-5">
+                      {step.directions.map((direction) => (
+                        <li key={direction.id} className="pb-1">
+                          {direction.step}.
+                          <span className="pl-1">{direction.direction}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </>
             ))}
           </div>
         </div>
