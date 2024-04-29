@@ -14,7 +14,9 @@ const SingleRecipePage = async ({
     include: {
       RecipeComponent: {
         include: {
-          ingredients: { include: { measurement: true } },
+          ingredients: {
+            include: { measurement: { include: { unit: true } } },
+          },
           directions: true,
         },
       },
@@ -27,7 +29,7 @@ const SingleRecipePage = async ({
   }
 
   return (
-    <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-24">
+    <main className="min-h-[500px] mt-24 pb-[30px] small:mt-0 xsmall:mt-0 px-24">
       <DisplayRecipe recipe={recipe} />
     </main>
   );
