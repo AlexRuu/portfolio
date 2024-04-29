@@ -32,6 +32,7 @@ model Recipe {
 
 model RecipeComponent {
   id          String       @id @default(uuid())
+  step        Int
   title       String
   recipeId    String
   recipe      Recipe       @relation(fields: [recipeId], references: [id])
@@ -55,13 +56,13 @@ model Measurement {
   id         String       @id @default(uuid())
   amount     String
   unitId     String?
-  unit       Unit? @relation(fields: [unitId], references: [id])
+  unit       Unit?        @relation(fields: [unitId], references: [id])
   Ingredient Ingredient[]
 }
 
 model Unit {
-  id String @id @default(uuid())
-  title String
+  id          String        @id @default(uuid())
+  title       String
   measurement Measurement[]
 }
 
@@ -84,18 +85,18 @@ model RecipeImage {
 }
 
 model Project {
-  id          String   @id @default(uuid())
-  title       String
-  description String
-  url         String
+  id           String         @id @default(uuid())
+  title        String
+  description  String
+  url          String
   projectImage ProjectImage[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
 }
 
 model ProjectImage {
-  id String @id @default(uuid())
-  url String 
+  id        String  @id @default(uuid())
+  url       String
   projectId String
-  project Project @relation(fields: [projectId], references: [id])
+  project   Project @relation(fields: [projectId], references: [id])
 }
