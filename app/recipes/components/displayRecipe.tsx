@@ -1,5 +1,6 @@
 "use client";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { cn } from "@/lib/utils";
 import { Prisma } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,7 +26,7 @@ const DisplayRecipe: React.FC<DisplayRecipeProps> = ({ recipe }) => {
   return (
     <div className="text-center w-full">
       <h1 className="md:text-4xl text-2xl mb-4 font-bold">{recipe.title}</h1>
-      <div className="flex text-center justify-center gap-1 p-2">
+      <div className="flex text-center justify-center gap-5 p-2 mb-8">
         <p>
           <span className="font-bold px-1">Prep Time:</span>
           {recipe.prepTime}
@@ -64,7 +65,7 @@ const DisplayRecipe: React.FC<DisplayRecipeProps> = ({ recipe }) => {
         id="recipe"
         className="grid md:grid-cols-[25%_75%] grid-cols-1 mt-10"
       >
-        <div className="text-left p-3 mr-5 bg-blue-50 rounded-md overflow-hidden max-h-[60%]">
+        <div className="text-left p-3 mr-5 bg-blue-50 rounded-md overflow-hidden md:max-h-[70%] max-h-full">
           <h2 className="text-2xl font-semibold">Ingredients</h2>
           <p className="text-lg">for {recipe.servingSize}</p>
           <div>
@@ -80,7 +81,12 @@ const DisplayRecipe: React.FC<DisplayRecipeProps> = ({ recipe }) => {
                             <span className="font-medium pr-1">
                               {ingredient.measurement?.amount}
                             </span>
-                            <span className="pr-1 font-medium">
+                            <span
+                              className={cn(
+                                "font-medium",
+                                ingredient.measurement.unit && "pr-1"
+                              )}
+                            >
                               {ingredient.measurement.unit?.title}
                             </span>
                           </>
