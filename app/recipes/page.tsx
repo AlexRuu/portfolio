@@ -42,13 +42,13 @@ const RecipesPage = async () => {
                       className="object-cover rounded-[20px]"
                     />
                   </AspectRatio>
-                  <div className="h-full absolute top-0 block w-full overflow-hidden rounded-[20px]">
+                  <div className="md:block hidden h-full absolute top-0 w-full overflow-hidden rounded-[20px]">
                     <div className="h-full translate-y-full text-center w-full group-hover:-translate-y-0 transition-all duration-700 group-hover:bg-blue-50 group-hover:bg-opacity-50 px-10">
-                      <p className="text-[25px]">{recipe.title}</p>
-                      <p>{recipe.shortDescription}</p>
+                      <p className="pt-2 lg:pt-10">{recipe.shortDescription}</p>
                     </div>
                   </div>
                 </div>
+                <div className="text-lg">{recipe.title}</div>
               </Link>
             </div>
           ))}
