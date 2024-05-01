@@ -85,14 +85,15 @@ model RecipeImage {
 }
 
 model Project {
-  id               String         @id @default(uuid())
+  id               String           @id @default(uuid())
   title            String
   description      String
   shortDescription String
   url              String
   projectImage     ProjectImage[]
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @updatedAt
+  projectFeature   ProjectFeature[]
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
 }
 
 model ProjectImage {
@@ -100,4 +101,12 @@ model ProjectImage {
   url       String
   projectId String
   project   Project @relation(fields: [projectId], references: [id])
+}
+
+model ProjectFeature {
+  id        String   @id @default(uuid())
+  title     String
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id])
+  createdAt DateTime @default(now())
 }

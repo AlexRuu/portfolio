@@ -1,5 +1,6 @@
 "use client";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Header from "@/components/ui/header";
 import { cn } from "@/lib/utils";
 import { Prisma } from "@prisma/client";
 import Image from "next/image";
@@ -25,7 +26,7 @@ interface DisplayRecipeProps {
 const DisplayRecipe: React.FC<DisplayRecipeProps> = ({ recipe }) => {
   return (
     <div className="text-center w-full">
-      <h1 className="md:text-4xl text-2xl mb-4 font-bold">{recipe.title}</h1>
+      <Header title={recipe.title} />
       <div className="flex text-center justify-center gap-5 p-2 mb-8">
         <p>
           <span className="font-bold px-1">Prep Time:</span>
@@ -42,7 +43,7 @@ const DisplayRecipe: React.FC<DisplayRecipeProps> = ({ recipe }) => {
       </div>
       <Link
         href="#recipe"
-        className="hover:before:scale-x-100 relative before:w-full before:h-[2px] before:transition-transform before:duration-300 before:scale-x-0 before:bg-black before:absolute before:left-0 before:bottom-0 "
+        className="hover:before:scale-x-100 relative before:w-full before:h-[2px] before:transition-transform before:duration-300 before:scale-x-0 before:bg-black before:absolute before:left-0 before:bottom-0"
       >
         Jump to Recipe
       </Link>

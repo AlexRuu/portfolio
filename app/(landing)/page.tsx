@@ -9,7 +9,7 @@ const HomePage = async () => {
   });
 
   return (
-    <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-24">
+    <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-20">
       <div className="flex flex-col">
         <HomeDisplay images={images} />
         <BelowDisplay />

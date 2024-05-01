@@ -17,9 +17,8 @@ const ProjectsPage = async () => {
     include: { projectImage: true },
   });
 
-  console.log(projects[0]);
   return (
-    <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-24">
+    <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0 px-20">
       <div className="text-center w-full">
         <Header title="Projects" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
