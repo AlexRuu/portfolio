@@ -1,5 +1,4 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import Header from "@/components/ui/header";
 import { Prisma } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
